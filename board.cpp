@@ -144,7 +144,7 @@ void Board::possible_attack (Warrior& w) // ищет возможные клет
 			++max_y;
 	}
 
-	for (int i = 0; i < army_.size(); ++i)
+	for (size_t i = 0; i < army_.size(); ++i)
 		if (unit(i).x() >= min_x && unit(i).x() <= max_x && unit(i).y() >= min_y && unit(i).y() <= max_y && unit(i).side() != w.side() && unit(i).alive())
 			state (unit(i).x(), unit(i).y(), ATTACK);
 }

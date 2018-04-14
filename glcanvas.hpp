@@ -135,7 +135,7 @@ endl не поддерживается.
 #define CNV_PI 3.14159265358979323846;
 #endif
 
-inline float frand(float low, float high, float h = 0.00001)
+inline float frand(float low, float high)
 {
 	const int m = 0x7fff;
 	const float r = rand() % m / float(m - 1);

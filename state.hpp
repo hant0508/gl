@@ -19,8 +19,8 @@ public:
 
 	virtual void on_paint() {}
 	virtual void on_turn() {}
-	virtual void on_mouse (int button, int state, int x, int y) {}
-	virtual void on_keyboard (unsigned char key) {}
+	virtual void on_mouse (int, int, int, int) {}
+	virtual void on_keyboard (unsigned char) {}
 
 protected:
 	Board& board();
@@ -52,7 +52,6 @@ public:
 	Animation (Fight& f, Action a, int x, int y): State(f), action_(a), x_(x), y_(y) {}
 	void on_tick();
 	void on_paint();
-	void on_keyboard (unsigned char key);
 
 private:
 	Action action_;

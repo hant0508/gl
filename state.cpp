@@ -100,8 +100,6 @@ void Animation::on_paint()
 	board().draw();
 }
 
-void Animation::on_keyboard (unsigned char key) {} // почему-то без неё падает
-
 void Animation::on_tick()
 {
 	board().tick (action_, x_, y_);

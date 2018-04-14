@@ -1,6 +1,5 @@
 all:
 
-#	clang++ -g -Wall -lglut -lGL -lGLU -I. glcanvas.cpp lodepng.cpp
 	clang++ -g -Wall -Wextra -lglut -lGL -lGLU -I. glcanvas.cpp lodepng.cpp main.cpp warrior.cpp fight.cpp board.cpp state.cpp animator.cpp bitmaps.cpp
 
 run: all
