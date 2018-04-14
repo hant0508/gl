@@ -1,0 +1,167 @@
+# BEGIN BATTLE_BG
+0
+img/back/back1.png
+img/back/back2.png
+img/back/back3.png
+img/back/back4.png
+img/back/back5.png
+# END BATTLE_BG
+
+# BEGIN PEASANT_IDLE
+10
+img/idle/peasant1l.png
+img/idle/peasant1r.png
+img/idle/peasant2l.png
+img/idle/peasant2r.png
+img/idle/peasant3l.png
+img/idle/peasant3r.png
+img/idle/peasant4l.png
+img/idle/peasant4r.png
+img/idle/peasant5l.png
+img/idle/peasant5r.png
+img/idle/peasant4l.png
+img/idle/peasant4r.png
+img/idle/peasant3l.png
+img/idle/peasant3r.png
+img/idle/peasant2l.png
+img/idle/peasant2r.png
+# END PEASANT_IDLE
+
+# BEGIN ARCHER_IDLE
+20
+img/idle/archer1l.png
+img/idle/archer1r.png
+img/idle/archer2l.png
+img/idle/archer2r.png
+img/idle/archer3l.png
+img/idle/archer3r.png
+img/idle/archer4l.png
+img/idle/archer4r.png
+img/idle/archer5l.png
+img/idle/archer5r.png
+img/idle/archer4l.png
+img/idle/archer4r.png
+img/idle/archer3l.png
+img/idle/archer3r.png
+img/idle/archer2l.png
+img/idle/archer2r.png
+# END ARCHER_IDLE
+
+# BEGIN PEASANT_MOVE
+11
+img/idle/peasant1l.png
+img/idle/peasant1r.png
+img/move/peasant1l.png
+img/move/peasant1r.png
+img/move/peasant2l.png
+img/move/peasant2r.png
+img/move/peasant3l.png
+img/move/peasant3r.png
+img/move/peasant4l.png
+img/move/peasant4r.png
+img/move/peasant5l.png
+img/move/peasant5r.png
+img/move/peasant6l.png
+img/move/peasant6r.png
+img/move/peasant7l.png
+img/move/peasant7r.png
+img/move/peasant8l.png
+img/move/peasant8r.png
+img/move/peasant9l.png
+img/move/peasant9r.png
+img/move/peasant10l.png
+img/move/peasant10r.png
+img/move/peasant11l.png
+img/move/peasant11r.png
+img/move/peasant12l.png
+img/move/peasant12r.png
+# END PEASANT_MOVE
+
+# BEGIN ARCHER_MOVE
+21
+img/idle/archer1l.png
+img/idle/archer1r.png
+img/move/archer1l.png
+img/move/archer1r.png
+img/move/archer2l.png
+img/move/archer2r.png
+img/move/archer3l.png
+img/move/archer3r.png
+img/move/archer4l.png
+img/move/archer4r.png
+img/move/archer5l.png
+img/move/archer5r.png
+img/move/archer6l.png
+img/move/archer6r.png
+img/move/archer7l.png
+img/move/archer7r.png
+img/move/archer8l.png
+img/move/archer8r.png
+img/move/archer9l.png
+img/move/archer9r.png
+img/move/archer10l.png
+img/move/archer10r.png
+img/move/archer11l.png
+img/move/archer11r.png
+img/move/archer12l.png
+img/move/archer12r.png
+# END ARCHER_MOVE
+
+# BEGIN PEASANT_ATTACK
+12
+img/idle/peasant1l.png
+img/idle/peasant1r.png
+img/attack/peasant1l.png
+img/attack/peasant1r.png
+img/attack/peasant2l.png
+img/attack/peasant2r.png
+img/attack/peasant3l.png
+img/attack/peasant3r.png
+img/attack/peasant4l.png
+img/attack/peasant4r.png
+img/attack/peasant5l.png
+img/attack/peasant5r.png
+img/attack/peasant6l.png
+img/attack/peasant6r.png
+img/attack/peasant7l.png
+img/attack/peasant7r.png
+img/attack/peasant8l.png
+img/attack/peasant8r.png
+# END PEASANT_ATTACK
+
+# BEGIN ARCHER_ATTACK
+22
+img/idle/archer1l.png
+img/idle/archer1r.png
+img/attack/archer1l.png
+img/attack/archer1r.png
+img/attack/archer2l.png
+img/attack/archer2r.png
+img/attack/archer3l.png
+img/attack/archer3r.png
+img/attack/archer4l.png
+img/attack/archer4r.png
+img/attack/archer5l.png
+img/attack/archer5r.png
+img/attack/archer6l.png
+img/attack/archer6r.png
+img/attack/archer7l.png
+img/attack/archer7r.png
+img/attack/archer8l.png
+img/attack/archer8r.png
+# END ARCHER_ATTACK
+
+# BEGIN EXPLOSION
+100
+img/exp0.png
+img/exp1.png
+img/exp2.png
+img/exp3.png
+img/exp4.png
+img/exp5.png
+img/exp6.png
+img/exp7.png
+img/exp8.png
+# END EXPLOSION
+
+# END_OF_FILE
