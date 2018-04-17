@@ -1,5 +1,6 @@
 *.o
 *.d
 p.cpp
+t.cpp
 a.out
 gl
