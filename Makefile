@@ -4,6 +4,7 @@ EXCLUDE = t.cpp p.cpp
 CXXFLAGS = -c -MMD -g -Wall -Wextra -I. # don't remove; used by default (implicit) targets
 LDFLAGS = -lglut -lGL -lGLU -o $(EXE)
 OBJ = $(patsubst %.cpp, %.o, $(filter-out $(EXCLUDE), $(wildcard *.cpp)))
+PREREQ = $(patsubst %.o, %.d, $(OBJ))
 
 all: $(EXE)
 
@@ -16,7 +17,7 @@ run: all
 	$(EXE)
 
 clean:
-	$(RM) *.o *.d $(EXE)
+	$(RM) $(OBJ) $(PREREQ) $(EXE)
 
 debug: clean all
 	gdb $(EXE)
