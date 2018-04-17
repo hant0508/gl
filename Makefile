@@ -1,11 +1,23 @@
-all:
+CXX = clang++
+EXE = ./gl
+CXXFLAGS = -c -MMD -g -Wall -Wextra -I.
+LDFLAGS = -lglut -lGL -lGLU -o $(EXE)
+OBJ = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-	clang++ -g -Wall -Wextra -lglut -lGL -lGLU -I. glcanvas.cpp lodepng.cpp main.cpp warrior.cpp fight.cpp board.cpp state.cpp animator.cpp bitmaps.cpp
+all: $(EXE)
+
+$(EXE): $(OBJ)
+	$(CXX) $(LDFLAGS) $(OBJ)
+
+-include *.d
 
 run: all
+	$(EXE)
 
-	./a.out
+clean:
+	rm *.o *.d $(EXE)
 
-debug: all
+debug: clean all
+	gdb $(EXE)
 
-	gdb ./a.out
+.PHONY: all run clean debug
