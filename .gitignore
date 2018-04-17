@@ -1,0 +1,5 @@
+*.o
+*.d
+p.cpp
+a.out
+gl
