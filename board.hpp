@@ -32,6 +32,7 @@ public:
 	Warrior& selected_unit () { return army_.at(selected_); }
 	int army_size() const { return army_.size(); }
 	int selected() const { return selected_; }
+	bool animated() const { return animator_.complete(); }
 
 private:
 	int selected_;

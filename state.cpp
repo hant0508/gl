@@ -104,6 +104,7 @@ void Animation::on_tick()
 {
 	board().tick (action_, x_, y_);
 
-	finished_ = board().selected_unit().animated();
+	finished_ = (action_ == ATTACK ? board().animated() : board().selected_unit().animated());
+
 	if (finished_) fight_.select (board().next_unit(), board()); // выбирает следующий юнит
 }

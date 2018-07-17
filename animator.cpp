@@ -88,7 +88,7 @@ void Animator::draw() const
 void Animator::text_out (bool selected, Side side, int health, int ap) const
 {
 	if (selected) color (0, 0, 0.8); // цвет выбранного юнита
-	else if (side== AI) color (0.8, 0, 0); // цвет юнитов противника
+	else if (side == AI) color (0.8, 0, 0); // цвет юнитов противника
 	else if (side == PLAYER) color (0.8, 0.9, 0); // цвет юнитов игрока
 
 	position (x_+20, y_); // выводит ХП и АП юнита
