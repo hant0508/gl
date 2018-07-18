@@ -52,7 +52,7 @@ void Fight::start ()
 	}
 
 	background_ = rand() % 5; // выбирает фон
-	states_.push (new PlayerTurn (*this)); // добавляет в очередь ход игрока
+	states_.push (new PlayerTurn()); // добавляет в очередь ход игрока
 	select (0, board_); // выбирает первый юнит игрока
 }
 
@@ -143,8 +143,8 @@ Board Fight::make_move()
 	const int y = sel/SIZE;
 
 	// добавляет в очередь анимацию атаки или движения
-	if (b.action (x, y) == MOVE) states_.push (new Animation (*this, MOVE, x, y));
-	else if (b.action (x, y) == ATTACK) states_.push (new Animation (*this, ATTACK, x, y));
+	if (b.action (x, y) == MOVE) states_.push (new Animation (MOVE, x, y));
+	else if (b.action (x, y) == ATTACK) states_.push (new Animation (ATTACK, x, y));
 
 	if (sel >= 0) act (x, y, b); // делает выбранный ход
 
@@ -181,3 +181,23 @@ void Fight::keyboard (unsigned char key)
 
 	if (key == 'q') exit(0); // выход из игры
 }
+
+/*** namespace fight ***/
+
+void fight::tick() { Fight::inst().tick(); }
+void fight::draw() { Fight::inst().draw(); }
+void fight::next_state() { Fight::inst().next_state(); }
+
+void fight::start() { Fight::inst().start(); }
+void fight::select (int num, Board& b) { Fight::inst().select (num, b); }
+void fight::act (int x, int y, Board& b) { Fight::inst().act(x, y, b); }
+int fight::value (Board before, Board after) { return Fight::inst().value (before, after); }
+Board fight::make_move() { return Fight::inst().make_move(); }
+void fight::ai() { Fight::inst().ai(); }
+
+void fight::mouse (int button, int state, int x, int y) { Fight::inst().mouse (button, state, x, y); }
+void fight::keyboard (unsigned char key) { Fight::inst().keyboard (key); }
+
+Board& fight::board() { return Fight::inst().board(); }
+void fight::push_state (State* s) { Fight::inst().push_state (s); }
+Id fight::background () { return Fight::inst().background(); }

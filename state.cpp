@@ -8,7 +8,7 @@ using namespace cnv;
 
 Board& State::board()
 {
-	return fight_.board();
+	return fight::board();
 }
 
 void State::on_tick()
@@ -46,15 +46,15 @@ void PlayerTurn::on_mouse (int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) // клик ЛКМ
 	{
-		fight_.act (x, y, board()); // делает ход
+		fight::act (x, y, board()); // делает ход
 
 		// добавляет в очередь анимацию атаки или движения
-		if (board().action (x, y) == MOVE) fight_.push_state (new Animation (fight_, MOVE, x, y));
-		else if (board().action (x, y) == ATTACK) fight_.push_state (new Animation (fight_, ATTACK, x, y));
+		if (board().action (x, y) == MOVE) fight::push_state (new Animation (MOVE, x, y));
+		else if (board().action (x, y) == ATTACK) fight::push_state (new Animation (ATTACK, x, y));
 		
 		// и следующий ход
-		if (board().next_unit() >= 0) fight_.push_state (new PlayerTurn (fight_)); // пока есть юниты игрока
-		else fight_.push_state (new AiTurn (fight_));
+		if (board().next_unit() >= 0) fight::push_state (new PlayerTurn()); // пока есть юниты игрока
+		else fight::push_state (new AiTurn());
 
 		finished_ = true;
 	}
@@ -67,10 +67,10 @@ void PlayerTurn::on_keyboard (unsigned char key)
 		board().selected_unit().reset_ap(0); // собственно, пропускает ход
 
 		// добавляет в очередь следующий ход
-		if (board().next_unit() >= 0) fight_.push_state (new PlayerTurn (fight_));
-		else fight_.push_state (new AiTurn (fight_));
+		if (board().next_unit() >= 0) fight::push_state (new PlayerTurn());
+		else fight::push_state (new AiTurn());
 
-		fight_.select (board().next_unit(), board()); // выбирает следующий юнит
+		fight::select (board().next_unit(), board()); // выбирает следующий юнит
 
 		finished_ = true;
 	}
@@ -85,10 +85,10 @@ void AiTurn::on_paint()
 
 void AiTurn::on_turn()
 {
-	fight_.ai(); // вызывает ИИ, который делает ход
+	fight::ai(); // вызывает ИИ, который делает ход
 
-	if (board().next_unit() >= 0) fight_.push_state (new AiTurn (fight_)); // пока не закончились юниты бота
-	else fight_.push_state (new PlayerTurn (fight_));
+	if (board().next_unit() >= 0) fight::push_state (new AiTurn()); // пока не закончились юниты бота
+	else fight::push_state (new PlayerTurn());
 
 	finished_ = true;
 }
@@ -106,5 +106,5 @@ void Animation::on_tick()
 
 	finished_ = (action_ == ATTACK ? board().animated() : board().selected_unit().animated());
 
-	if (finished_) fight_.select (board().next_unit(), board()); // выбирает следующий юнит
+	if (finished_) fight::select (board().next_unit(), board()); // выбирает следующий юнит
 }

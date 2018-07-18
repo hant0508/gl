@@ -10,7 +10,7 @@ class Board;
 class State
 {
 public:
-	State (Fight& f): fight_ (f), finished_(false) {}
+	State (): finished_(false) {}
 	virtual ~State () {}
 
 	bool finished () const { return finished_; }
@@ -25,14 +25,13 @@ public:
 protected:
 	Board& board();
 
-	Fight& fight_;
 	bool finished_;
 };
 
 class PlayerTurn: public State
 {
 public:
-	PlayerTurn (Fight& f): State(f) {}
+	PlayerTurn (): State() {}
 	void on_paint();
 	void on_keyboard (unsigned char key);
 	void on_mouse (int button, int state, int x, int y);
@@ -41,7 +40,7 @@ public:
 class AiTurn: public State
 {
 public:
-	AiTurn (Fight& f): State(f) {}
+	AiTurn (): State() {}
 	void on_paint();
 	void on_turn();
 };
@@ -49,7 +48,7 @@ public:
 class Animation: public State
 {
 public:
-	Animation (Fight& f, Action a, int x, int y): State(f), action_(a), x_(x), y_(y) {}
+	Animation (Action a, int x, int y): State(), action_(a), x_(x), y_(y) {}
 	void on_tick();
 	void on_paint();
 

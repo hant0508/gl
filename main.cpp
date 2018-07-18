@@ -8,29 +8,27 @@ using namespace cnv;
 
 //ofstream logger ("gl.log");
 
-Fight fight;
-
 void redraw() // glutDisplayFunc
 {
-	fight.draw();
+	fight::draw();
 	glutSwapBuffers();
 }
 
 void tick (int)
 {
-	fight.tick();
+	fight::tick();
 	glutPostRedisplay();
 	glutTimerFunc(120, tick, 0);
 }
 
 void Mouse (int button, int state, int x, int y) // glutMouseFunc
 {
-	fight.mouse (button, state, x, y);
+	fight::mouse (button, state, x, y);
 }
 
 void Keyboard (unsigned char key, int, int) // glutKeyboardFunc
 {
-	fight.keyboard (key);
+	fight::keyboard (key);
 }
 
 int main()
@@ -43,7 +41,7 @@ int main()
 
 	srand (time(0));
 	bitmaps::load();
-	fight.start();
+	fight::start();
 	tick(1);
 
 	glutMainLoop();
