@@ -21,10 +21,10 @@ int Bitmaps::size (Id id) const // размер конкретного пака 
 	return find(id).size();
 }
 
-void Bitmaps::draw (Id id, int frame, int x, int y, int scale) const
+void Bitmaps::draw (Id id, int frame, int x, int y) const
 {
 	color (1, 1, 1);
-	find(id).at(frame)->draw (x, y, scale);
+	find(id).at(frame)->draw (x, y, getScale());
 }
 
 void Bitmaps::load()
@@ -81,12 +81,27 @@ void bitmaps::load ()
 	Bitmaps::inst().load();
 }
 
-void bitmaps::draw (Id id, int frame, int x, int y, int scale)
+void bitmaps::draw (Id id, int frame, int x, int y)
 {
-	Bitmaps::inst().draw (id, frame, x, y, scale);
+	Bitmaps::inst().draw (id, frame, x, y);
 }
 
 int bitmaps::size (Id id)
 {
 	return Bitmaps::inst().size (id);
+}
+
+size_t bitmaps::getWindowSize()
+{
+	return Bitmaps::inst().getWindowSize();
+}
+
+void bitmaps::setWindowSize(size_t size)
+{
+	Bitmaps::inst().setWindowSize (size);
+}
+
+float bitmaps::getScale()
+{
+	return Bitmaps::inst().getScale();
 }

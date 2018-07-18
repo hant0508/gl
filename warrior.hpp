@@ -11,6 +11,7 @@ public:
 
 	void tick (Action action);
 	void draw (bool selected) const;
+	void redraw();
 
 	void resign();
 	

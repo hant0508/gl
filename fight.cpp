@@ -14,7 +14,7 @@ void Fight::tick()
 
 void Fight::draw() 
 {
-	bitmaps::draw (BATTLE_BG, background_, 0, 0, 600);
+	bitmaps::draw (BATTLE_BG, background_, 0, 0);
 
 	states_.front()->on_paint();
 
@@ -68,7 +68,7 @@ void Fight::select (int num, Board& b)
 
 	if (num == -1) // если сделали ход все юниты
 	{
-		for (int i = 0; i < b.army_size(); ++i) // восстанавливает АП юнитов противника
+		for (size_t i = 0; i < b.army_size(); ++i) // восстанавливает АП юнитов противника
 			if (b.unit(i).side() == !b.selected_unit().side() && b.unit(i).alive())
 				b.unit(i).reset_ap (1);
 
@@ -90,7 +90,7 @@ int Fight::value (Board before, Board after) // оценка выгодност�
 {
 	int p1 = 0, c1 = 0, p2 = 0, c2 = 0;
 
-	for(int i = 0; i < before.army_size(); ++i) // считает общее ХП "до" и "после"
+	for(size_t i = 0; i < before.army_size(); ++i) // считает общее ХП "до" и "после"
 	{
 		if (i%2 == 0) // игрока
 		{
@@ -168,7 +168,7 @@ void Fight::act (int x, int y, Board& b)
 
 void Fight::mouse (int button, int state, int x, int y)
 {
-	const int cell_x = x/(WIDTH/SIZE), cell_y = y/(HEIGHT/SIZE);
+	const int cell_x = x/(bitmaps::getWindowSize()/SIZE), cell_y = y/(bitmaps::getWindowSize()/SIZE);
 
 	states_.front()->on_mouse (button, state, cell_x, cell_y);
 	next_state();

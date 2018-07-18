@@ -2,6 +2,7 @@
 #include "fight.hpp"
 #include "board.hpp"
 #include "glcanvas.hpp"
+#include "bitmaps.hpp"
 
 using namespace std;
 using namespace cnv;
@@ -25,8 +26,8 @@ void PlayerTurn::on_paint()
 	for (int i = 0; i < SIZE; ++i) // рисует возможные действия для юнитов игрока
 		for (int j = 0; j < SIZE; ++j)
 		{
-			int x = i * WIDTH/SIZE + WIDTH/2/SIZE;
-			int y = j * HEIGHT/SIZE + HEIGHT/2/SIZE + 30;
+			int x = i * bitmaps::getWindowSize()/SIZE + bitmaps::getWindowSize()/2/SIZE;
+			int y = j * bitmaps::getWindowSize()/SIZE + bitmaps::getWindowSize()/2/SIZE + 30;
 
 			if (board().action (i, j) == MOVE) // если можно пойти
 			{	

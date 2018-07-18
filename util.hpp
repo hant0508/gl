@@ -1,10 +1,10 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
-//#include <fstream>
+#include <iostream>
 
 const int SIZE = 5;
-const int HEIGHT = 600, WIDTH = 600;
+const float DEFAULT_WINDOW_SIZE = 600;
 
 typedef bool Side;
 const Side PLAYER = 0, AI = 1;
@@ -24,7 +24,5 @@ const Id ARCHER_MOVE = 21;
 const Id PEASANT_ATTACK = 12;
 const Id ARCHER_ATTACK = 22;
 const Id EXPLOSION = 100;
-
-//extern std::ofstream logger;
 
 #endif // UTIL_HPP

@@ -1,14 +1,13 @@
 #include "glcanvas.hpp"
 #include "animator.hpp"
-#include "bitmaps.hpp"
 
 using namespace cnv;
 using namespace std;
 
 void Animator::init (Id id, int x, int y, int f) // задаёт начальные значения
 {
-	x_ = convert (x, WIDTH) - 40; // convert переводит координаты из игровых в оконные
-	y_ = convert (y, HEIGHT) - 35;
+	x_ = convert (x, bitmaps::getWindowSize()); // convert переводит координаты из игровых в оконные
+	y_ = convert (y, bitmaps::getWindowSize());
 	old_x_ = x_;
 	old_y_ = y_;
 
@@ -23,8 +22,8 @@ void Animator::move (int cur_x, int to_x, int cur_y, int to_y)
 	it_ = max (abs(cur_x-to_x), abs(cur_y-to_y)); // количество циклов, которые нужно выполнить
 	// обычно он один, но при движении на несколько клеток их будет больше
 
-	x_ = convert (cur_x, WIDTH) - 40;
-	y_ = convert (cur_y, HEIGHT) - 35;
+	x_ = convert (cur_x, bitmaps::getWindowSize());
+	y_ = convert (cur_y, bitmaps::getWindowSize());
 	old_x_ = x_;
 	old_y_ = y_;
 }
@@ -38,8 +37,8 @@ void Animator::tick (Id id, int to_x, int to_y, bool flip) // tick для юни
 	id_ = id;
 	int frames = bitmaps::size (id_);
 
-	to_x = convert (to_x, WIDTH) - 40;
-	to_y = convert (to_y, HEIGHT) - 35;
+	to_x = convert (to_x, bitmaps::getWindowSize());
+	to_y = convert (to_y, bitmaps::getWindowSize());
 
 	x_ += (to_x - old_x_)/(frames/2*it_);
 	y_ += (to_y - old_y_)/(frames/2*it_);
@@ -68,8 +67,8 @@ void Animator::tick (Id id, int x, int y) // tick для более просты
 	id_ = id;
 	int frames = bitmaps::size (id_);
 
-	x_ = convert (x, WIDTH) - 40;
-	y_ = convert (y, HEIGHT) - 35;
+	x_ = convert (x, bitmaps::getWindowSize());
+	y_ = convert (y, bitmaps::getWindowSize());
 
 	if (frame_ >= frames) // цикл всегда один
 	{
@@ -82,7 +81,7 @@ void Animator::tick (Id id, int x, int y) // tick для более просты
 
 void Animator::draw() const
 {
-	bitmaps::draw (id_, frame_, x_, y_, 500);
+	bitmaps::draw (id_, frame_, x_, y_);
 }
 
 void Animator::text_out (bool selected, Side side, int health, int ap) const
@@ -91,8 +90,9 @@ void Animator::text_out (bool selected, Side side, int health, int ap) const
 	else if (side == AI) color (0.8, 0, 0); // цвет юнитов противника
 	else if (side == PLAYER) color (0.8, 0.9, 0); // цвет юнитов игрока
 
-	position (x_+20, y_); // выводит ХП и АП юнита
+	size_t sz = bitmaps::getWindowSize();
+	position (x_ + sz/30, y_); // выводит ХП и АП юнита
 	cnv::text_out << "hp:" << health;
-	position (x_+25, y_+14);
+	position (x_ + sz/24, y_ + sz/40);
 	cnv::text_out << "ap:" << ap;
 }

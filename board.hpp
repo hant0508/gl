@@ -12,6 +12,7 @@ public:
 
 	void tick (Action action, int x, int y);
 	void draw() const;
+	void redraw();
 
 	void clear();
 	void push (Warrior w) { army_.push_back(w); }
@@ -30,12 +31,12 @@ public:
 
 	Warrior& unit (int i) { return army_.at(i); }
 	Warrior& selected_unit () { return army_.at(selected_); }
-	int army_size() const { return army_.size(); }
+	size_t army_size() const { return army_.size(); }
 	int selected() const { return selected_; }
 	bool animated() const { return animator_.complete(); }
 
 private:
-	int selected_;
+	unsigned selected_;
 	std::vector<int> cells_;
 	std::vector<Warrior> army_;
 	bool animating_;

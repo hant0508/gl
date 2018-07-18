@@ -14,8 +14,8 @@ void Board::tick (Action action, int x, int y)
 {
 	selected_unit().tick (action); // передаёт выбранному юниту tick с его действием
 
-	for (int i = 0; i < army_size(); ++i) // а всем остальным юнитам - с бездействием
-		if (i != selected()) army_.at(i).tick (IDLE);
+	for (size_t i = 0; i < army_size(); ++i) // а всем остальным юнитам - с бездействием
+		if (i != selected_) army_.at(i).tick (IDLE);
 
 	if (action == ATTACK) // анимирует взрыв 
 	{
@@ -26,17 +26,15 @@ void Board::tick (Action action, int x, int y)
 
 void Board::draw() const
 {
-
-	for (int i = 0; i < army_size(); ++i) // вызывает прорисовку юнитов
+	for (size_t i = 0; i < army_size(); ++i) // вызывает прорисовку юнитов
 		army_.at(i).draw (i == selected_); // отправит true, если i юнит выбран
 	if (animating_) animator_.draw(); // рисует взрыв
-/*
-	color (0, 0, 0);
-	for (int i = 0; i < HEIGHT/SIZE; ++i) // сетка
-		line (0, i*HEIGHT/SIZE, HEIGHT, i*HEIGHT/SIZE);
-	for (int i = 0; i < WIDTH/SIZE; ++i)
-		line (i*WIDTH/SIZE, 0, i*WIDTH/SIZE, WIDTH);
-*/
+}
+
+void Board::redraw()
+{
+	for (size_t i = 0; i < army_size(); ++i)
+		army_.at(i).redraw();
 }
 
 void Board::state (int x, int y, int s) // изменяет состояние клетки
@@ -75,14 +73,14 @@ int Board::next_unit() // возвращает номер следующего �
 {
 	if (selected_ < 0) return -1;
 
-	for (int i = selected_; i < army_size(); i += 2)
+	for (size_t i = selected_; i < army_size(); i += 2)
 		if (unit(i).ap()) return i;
 	return -1;
 }
 
 void Board::attack (int x, int y)
 {
-	for (int i = 0; i < army_size(); ++i)
+	for (size_t i = 0; i < army_size(); ++i)
 		if (unit(i).x() == x && unit(i).y() == y && unit(i).alive())
 		{
 			selected_unit().attack (unit(i));

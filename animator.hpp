@@ -2,6 +2,7 @@
 #define ANIMATOR_HPP
 
 #include "util.hpp"
+#include "bitmaps.hpp"
 
 class Animator
 {
@@ -16,7 +17,8 @@ public:
 	void draw() const;
 	void text_out (bool selected, Side side, int health, int ap) const;
 
-	int convert (int c, int l) const { return c * l/SIZE + l/2/SIZE; }
+	int convert (int c, int l) const
+	{ return c * l/SIZE + l/2/SIZE - bitmaps::getWindowSize()/13.35; }
 	bool complete () const { return complete_; }
 
 private:

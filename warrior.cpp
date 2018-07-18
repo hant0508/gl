@@ -28,11 +28,17 @@ Warrior::Warrior (int x, int y, Side side, UnitType type)
 
 void Warrior::tick (Action action) // прокручивает кадры юнита
 {
-	if (animated_ && action == IDLE && rand()%200 != 42) return; // фейспалм делает иногда, а не всё время
+	if (animated_ && action == IDLE && rand()%200 != 42)
+		return; // фейспалм делает иногда, а не всё время
 
 	Id id = type_*10 + action;
 	animator_.tick (id, x_, y_, flip_);
 	animated_ = animator_.complete();
+}
+
+void Warrior::redraw()
+{
+	animator_.init (type_*10, x_, y_, flip_);
 }
 
 void Warrior::draw (bool selected) const

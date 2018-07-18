@@ -49,9 +49,7 @@ void Image::draw(float x1, float y1, float x2, float y2)
 
 void Image::draw(float x, float y, float size)
 {
-	const int w = glutGet(GLUT_WINDOW_WIDTH);
-	const int h = glutGet(GLUT_WINDOW_HEIGHT);
-	draw(x, y, x+float(width_)/w*size, y + float(height_)/h*size);
+	draw(x, y, x+float(width_)*size, y + float(height_)*size);
 }
 
 void init()
